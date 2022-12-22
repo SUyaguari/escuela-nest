@@ -19,16 +19,16 @@ export class AsignaturaController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.asignaturaService.findOne(+id);
+    return this.asignaturaService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAsignaturaDto: UpdateAsignaturaDto) {
-    return this.asignaturaService.update(+id, updateAsignaturaDto);
+    return this.asignaturaService.update(id, updateAsignaturaDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.asignaturaService.remove(+id);
+    return this.asignaturaService.remove(id);
   }
 }

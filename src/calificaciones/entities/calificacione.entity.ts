@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose"
 import { Document } from "mongoose";
 
 @Schema()
-export class Calificacion {
+export class Calificacion extends Document{
 
     @Prop({
         index: true,
