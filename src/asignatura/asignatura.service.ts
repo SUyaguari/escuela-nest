@@ -32,7 +32,7 @@ export class AsignaturaService {
 
   }
 
-  async findOne(id: number) {
+  async findOne(id: string) {
     
 
     const asignatura = await this.asignaturaModel.findById(id);
@@ -44,7 +44,7 @@ export class AsignaturaService {
 
   }
 
-  async update(id: number, updateAsignaturaDto: UpdateAsignaturaDto) {
+  async update(id: string, updateAsignaturaDto: UpdateAsignaturaDto) {
     
     const as = await this.findOne(id);
     try{
@@ -59,7 +59,7 @@ export class AsignaturaService {
 
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
 
     const { deletedCount } = await this.asignaturaModel.deleteOne({ _id: id });
     if( deletedCount ===0)

@@ -4,6 +4,7 @@ import { UpdateRegistroDto } from './dto/update-registro.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Registro } from './entities/registro.entity';
 import { Model } from 'mongoose';
+import { LoginRegistroDto } from './dto/login-registro.dto';
 
 @Injectable()
 export class RegistroService {
@@ -40,6 +41,23 @@ export class RegistroService {
       throw new NotFoundException(`Registro with id, name or no "${id}" not found`);
 
     return registro;
+
+  }
+  
+  async login(loginRegistroDto: LoginRegistroDto) {
+
+    const { correo, contrasenia} = loginRegistroDto;
+
+    const registro = await this.registroModel.findOne({ correo: correo});
+
+    if( !registro) 
+      throw new NotFoundException(`Registro with correo "${correo}" not found`);
+
+    if( registro.contrasenia === contrasenia){
+      return registro;
+    }else{
+      return null;
+    }
 
   }
 

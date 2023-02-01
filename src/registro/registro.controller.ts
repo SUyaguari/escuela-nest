@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { RegistroService } from './registro.service';
 import { CreateRegistroDto } from './dto/create-registro.dto';
 import { UpdateRegistroDto } from './dto/update-registro.dto';
+import { LoginRegistroDto } from './dto/login-registro.dto';
 
 @Controller('registro')
 export class RegistroController {
@@ -20,6 +21,11 @@ export class RegistroController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.registroService.findOne(id);
+  }
+
+  @Post('login')
+  login(@Body() loginDto: LoginRegistroDto) {
+    return this.registroService.login(loginDto);
   }
 
   @Patch(':id')
